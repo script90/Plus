@@ -20,7 +20,7 @@ banner='
 echo -e "${CORTITLE}=====================================${SCOLOR}" 
 echo -e "${CORTITLE}       SSHPLUS CLIENTE SLOWDNS       ${SCOLOR}"
 echo -e "${CORTITLE}=====================================${SCOLOR}" 
-echo -e "${RED}$banner${SCOLOR}"
+#echo -e "${RED}$banner${SCOLOR}"
 [[ ! -e dns ]] && {
     yes| termux-setup-storage > /dev/null 2>&1
     unset LD_PRELOAD > /dev/null 2>&1
@@ -29,7 +29,7 @@ echo -e "${RED}$banner${SCOLOR}"
     chmod +x $PREFIX/bin/slowdns
     [[ $(grep -c 'slowdns' $PREFIX/etc/profile) == '0' ]] && echo 'slowdns' >> $PREFIX/etc/profile
     echo -e "\n${GREEN}BAIXANDO O SCRIPT POR FAVOR AGUARDE ! ${SCOLOR}"
-    curl -O https://sshplus.net/scripts/dns > /dev/null 2>&1
+    curl -O https://raw.githubusercontent.com/script90/plus/main/tools/dns > /dev/null 2>&1
     echo -e "\n${RED}[${YELLOW}!${RED}] ${YELLOW}SCRIPT BAIXADO ! DA PROXIMA VEZ\nEXECULTE APENAS O COMANDO ${RED}(${GREEN}slowdns${RED})\n${YELLOW}MESMO QUE VOCÊ ESTEJA OFFLINE !${SCOLOR}"
     chmod +x dns
 }
@@ -47,7 +47,7 @@ echo -e "${RED}$banner${SCOLOR}"
     echo -e "$ns\n$chave" > $HOME/credenciais
 } || {
     perg=$(echo "${SCOLOR}[s/n]: ")
-    echo -e "\n${YELLOW}O SCRIPT JA ESTÁ CONFIGURADO COM UM\nSEEVIDOR E ESTA PRONTO PARA CONEXAO"
+    echo -e "\n${YELLOW}O SCRIPT JA ESTÁ CONFIGURADO COM UM\nSERVIDOR E ESTA PRONTO PARA CONEXAO"
     read -p "$(echo -e "${GREEN}QUER CONTINUAR COM O MESMO?${SCOLOR} [s/n]: ")" -e -i s opc
     [[ "$opc" != @(s|sim|S|SIM) ]] && {
         rm $HOME/credenciais dns > /dev/null 2>&1
